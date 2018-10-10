@@ -1,8 +1,10 @@
-var http = require('http');
+var app = require('express')();
+var http = require('http').Server(app);
 
-http.createServer(function (req, res) {
-  res.writeHead(200, { 'Content-Type': 'text/plain'});
-  res.end('Hello Node.js\n');
-}).listen(8124, "127.0.0.1");
+app.get('/', function(req, res){
+  res.send('<h1>Hello world</h1>');
+});
 
-console.log('Server running at 'http://127.0.0.1:8124');
+http.listen(3000, function(){
+  console.log('listening on *:3000');
+})
